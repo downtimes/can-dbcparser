@@ -11,3 +11,11 @@
 *.lai
 *.la
 *.a
+
+
+#Directories and Eclipse Stuff
+.settings
+Debug
+.cproject
+.project
+KIT13ce_working.dbc
