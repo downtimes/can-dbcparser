@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 
 
 	std::cout << messages[2].getName() << "\n" << messages[2].getDlc() << " " << messages[2].getId() << " " << messages[2].getFrom() << "\n";
-	for_each(messages[2].begin(), messages[2].end(), [](const Signal& sig) {
+	for(auto sig : messages[2]) {
 		std::cout << sig.getName() << " " << sig.getUnit() << std::endl;
 		std::cout << sig.getStartbit() << "," << sig.getLength() << std::endl;
 		std::cout << "(" << sig.getFactor() << ", " << sig.getOffset() << ")" << std::endl;
@@ -57,17 +57,17 @@ int main(int argc, char* argv[]) {
 		} else if (sig.getMultiplexor() == Multiplexor::MULTIPLEXOR) {
 			std::cout << "+Multiplexor+" << std::endl;
 		}
-	});
+	};
 	std::cout << std::endl;
 //
-//	std::cout << messages[30].name << std::endl;
-//	for_each(messages[30].signals.begin(), messages[30].signals.end(), [](Signal& sig) {
-//		std::cout << "Signal: " << sig.name << "  ";
+//	std::cout << messages[30].getName() << std::endl;
+//	for(auto sig : messages[30]) {
+//		std::cout << "Signal: " << sig.getName() << "  ";
 //		std::cout << "To: ";
-//		for_each(sig.to.begin(), sig.to.end(), [](const std::string& to){
+//		for (auto to : sig.getTo()) {
 //			std::cout << to << ", ";
-//		});
+//		}
 //		std::cout << std::endl;
-//	});
-	return 0;
+//	};
+//	return 0;
 }

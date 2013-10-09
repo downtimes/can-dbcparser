@@ -51,9 +51,9 @@ std::istream& operator>>(std::istream& in, Message& msg) {
 
 std::set<std::string> Message::getTo() const {
 	std::set<std::string> collection;
-	for_each(signals.begin(), signals.end(), [&](const Signal& sig){
+	for (auto sig : signals) {
 		auto toList = sig.getTo();
 		collection.insert(toList.begin(), toList.end());
-	});
+	}
 	return collection;
 }
