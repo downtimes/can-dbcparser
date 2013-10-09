@@ -46,19 +46,19 @@ int main(int argc, char* argv[]) {
 	file.close();
 
 
-//	std::cout << messages[2].name << "\n" << messages[2].dlc << " " << messages[2].id << " " << messages[2].from << "\n";
-//	for_each(messages[2].signals.begin(), messages[2].signals.end(), [](Signal& sig) {
-//		std::cout << sig.name << " " << sig.unit << std::endl;
-//		std::cout << sig.startBit << "," << sig.length << std::endl;
-//		std::cout << "(" << sig.factor << ", " << sig.offset << ")" << std::endl;
-//		std::cout << "[" << sig.minimum << "," << sig.maximum << "]" << std::endl;
-//		if (sig.multiplexor == Multiplexor::MULTIPLEXED) {
-//			std::cout << "#" << sig.multiplexNum << "#" << std::endl;
-//		} else if (sig.multiplexor == Multiplexor::MULTIPLEXOR) {
-//			std::cout << "+Multiplexor+" << std::endl;
-//		}
-//	});
-//	std::cout << std::endl;
+	std::cout << messages[2].getName() << "\n" << messages[2].getDlc() << " " << messages[2].getId() << " " << messages[2].getFrom() << "\n";
+	for_each(messages[2].begin(), messages[2].end(), [](const Signal& sig) {
+		std::cout << sig.getName() << " " << sig.getUnit() << std::endl;
+		std::cout << sig.getStartbit() << "," << sig.getLength() << std::endl;
+		std::cout << "(" << sig.getFactor() << ", " << sig.getOffset() << ")" << std::endl;
+		std::cout << "[" << sig.getMinimum() << "," << sig.getMaximum() << "]" << std::endl;
+		if (sig.getMultiplexor() == Multiplexor::MULTIPLEXED) {
+			std::cout << "#" << sig.getMultiplexedNumber() << "#" << std::endl;
+		} else if (sig.getMultiplexor() == Multiplexor::MULTIPLEXOR) {
+			std::cout << "+Multiplexor+" << std::endl;
+		}
+	});
+	std::cout << std::endl;
 //
 //	std::cout << messages[30].name << std::endl;
 //	for_each(messages[30].signals.begin(), messages[30].signals.end(), [](Signal& sig) {

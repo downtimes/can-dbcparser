@@ -27,11 +27,9 @@ enum class Multiplexor {
 	MULTIPLEXOR
 };
 
-class Message;
-
 class Signal {
 
-public:
+	typedef std::set<std::string> toList;
 	std::string name;
 	ByteOrder order;
 	unsigned short startBit;
@@ -44,15 +42,25 @@ public:
 	std::string unit;
 	Multiplexor multiplexor;
 	unsigned short multiplexNum;
-	std::set<std::string> to;
-	Message& owner;
+	toList to;
 
-
+public:
 	friend std::istream& operator>>(std::istream& in, Signal& sig);
-	Signal(Message& owner) : name(""), order(ByteOrder::MOTOROLA),
-			startBit(0), length(0), sign(Sign::UNSIGNED), minimum(0),
-			maximum(0), factor(0), offset(0), unit(""), multiplexor(Multiplexor::NONE),
-			multiplexNum(0), owner(owner) {}
+
+	std::string getName() const { return name; }
+	ByteOrder getByteOrder() const { return order; }
+	unsigned short getStartbit() const { return startBit; }
+	unsigned short getLength() const { return length; }
+	Sign getSign() const { return sign; }
+	double getMinimum() const { return minimum; }
+	double getMaximum() const { return maximum; }
+	double getFactor() const { return factor; }
+	double getOffset() const { return offset; }
+	std::string getUnit() const { return unit; }
+	Multiplexor getMultiplexor() const { return multiplexor; }
+	unsigned short getMultiplexedNumber() const { return multiplexNum; }
+	toList getTo() const { return to; }
+
 };
 
 

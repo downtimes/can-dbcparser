@@ -8,6 +8,7 @@
 
 #include <istream>
 #include <limits>
+#include <algorithm>
 
 std::istream& operator>>(std::istream& in, Message& msg) {
 	std::string preamble;
@@ -36,7 +37,7 @@ std::istream& operator>>(std::istream& in, Message& msg) {
 
 	//As long as there is a Signal, parse the Signal
 	while(in) {
-		Signal sig(msg);
+		Signal sig;
 		in >> sig;
 		if (in) {
 			msg.signals.push_back(sig);
@@ -47,3 +48,12 @@ std::istream& operator>>(std::istream& in, Message& msg) {
 	return in;
 }
 
+
+std::set<std::string> Message::getTo() const {
+	std::set<std::string> collection;
+	for_each(signals.begin(), signals.end(), [&](const Signal& sig){
+		auto toList = sig.getTo();
+		collection.insert(toList.begin(), toList.end());
+	});
+	return collection;
+}

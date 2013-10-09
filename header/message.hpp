@@ -11,20 +11,31 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <set>
 
 #include "signal.hpp"
 
 class Message {
 
-public:
+	typedef std::vector<Signal> signalList;
 	std::string name;
 	std::uint32_t id;
-	unsigned char dlc;
+	std::size_t dlc;
 	std::string from;
-	std::vector<Signal> signals;
+	signalList signals;
 
-
+public:
+	typedef signalList::const_iterator const_iterator;
 	friend std::istream& operator>>(std::istream& in, Message& msg);
+
+	std::string getName() const { return name; }
+	std::uint32_t getId() const { return id; }
+	std::size_t getDlc() const { return dlc; }
+	std::string getFrom() const { return from; }
+	std::set<std::string> getTo() const;
+
+	const_iterator begin() const { return signals.begin(); }
+	const_iterator end() const { return signals.end(); }
 
 };
 
