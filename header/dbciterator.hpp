@@ -8,6 +8,27 @@
 #ifndef DBCTREE_HPP_
 #define DBCTREE_HPP_
 
+#include <vector>
+#include <istream>
+#include "message.hpp"
+
+class DBCIterator {
+
+	typedef std::vector<Message> messages_t;
+	messages_t messageList;
+
+public:
+	typedef messages_t::const_iterator const_iterator;
+	explicit DBCIterator(const std::string& filePath);
+	explicit DBCIterator(std::istream& stream);
+	const_iterator begin() const { return messageList.begin(); }
+	const_iterator end() const { return messageList.end(); }
+
+private:
+	void init(std::istream& stream);
+
+};
+
 
 
 

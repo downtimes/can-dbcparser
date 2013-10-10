@@ -46,8 +46,8 @@ int main(int argc, char* argv[]) {
 	file.close();
 
 
-	std::cout << messages[2].getName() << "\n" << messages[2].getDlc() << " " << messages[2].getId() << " " << messages[2].getFrom() << "\n";
-	for(auto sig : messages[2]) {
+	std::cout << messages[0].getName() << "\n" << messages[0].getDlc() << " " << messages[0].getId() << " " << messages[0].getFrom() << "\n";
+	for(auto sig : messages[0]) {
 		std::cout << sig.getName() << " " << sig.getUnit() << std::endl;
 		std::cout << sig.getStartbit() << "," << sig.getLength() << std::endl;
 		std::cout << "(" << sig.getFactor() << ", " << sig.getOffset() << ")" << std::endl;
