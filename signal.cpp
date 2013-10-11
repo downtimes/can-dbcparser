@@ -31,6 +31,7 @@ std::vector<std::string> split(const std::string &s, char delim) {
 std::istream& operator>>(std::istream& in, Signal& sig) {
 	std::string line;
 	std::getline(in, line);
+	if (!line.empty() && *line.rbegin() == '\r') line.erase(line.length() - 1, 1);
 	if (line.empty()) {
 		in.setstate(std::ios_base::failbit);
 		return in;

@@ -9,10 +9,15 @@
 
 #include <limits>
 #include <fstream>
+#include <stdexcept>
 
 DBCIterator::DBCIterator(const std::string& filePath) {
 	std::ifstream file(filePath);
-	init(file);
+	if (file) {
+		init(file);
+	} else {
+		throw std::invalid_argument("The File could not be opened");
+	}
 	file.close();
 }
 
@@ -21,6 +26,7 @@ DBCIterator::DBCIterator(std::istream& stream) {
 }
 
 void DBCIterator::init(std::istream& stream) {
+	messageList.clear();
 	std::vector<Message> messages;
 	do {
 		Message msg;
@@ -32,6 +38,7 @@ void DBCIterator::init(std::istream& stream) {
 			messages.push_back(msg);
 		}
 	} while (!stream.eof());
+	messageList.insert(messageList.begin(), messages.begin(), messages.end());
 }
 
 

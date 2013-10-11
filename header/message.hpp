@@ -17,15 +17,15 @@
 
 class Message {
 
-	typedef std::vector<Signal> signalList;
+	typedef std::vector<Signal> signals_t;
 	std::string name;
 	std::uint32_t id;
 	std::size_t dlc;
 	std::string from;
-	signalList signals;
+	signals_t signals;
 
 public:
-	typedef signalList::const_iterator const_iterator;
+	typedef signals_t::const_iterator const_iterator;
 	friend std::istream& operator>>(std::istream& in, Message& msg);
 
 	std::string getName() const { return name; }
@@ -36,6 +36,10 @@ public:
 
 	const_iterator begin() const { return signals.begin(); }
 	const_iterator end() const { return signals.end(); }
+
+	signals_t::const_reference operator[](std::size_t elem) {
+		return signals[elem];
+	}
 
 };
 
