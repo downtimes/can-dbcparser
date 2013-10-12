@@ -25,8 +25,8 @@ int main(int argc, char* argv[]) {
 
 	try {
 		DBCIterator dbc(argv[1]);
-		std::cout << dbc[3].getName() << "\n" << dbc[3].getDlc() << " " << dbc[3].getId() << " " << dbc[3].getFrom() << "\n";
-		for(auto sig : dbc[3]) {
+		std::cout << dbc[0].getName() << "\n" << dbc[0].getDlc() << " " << dbc[0].getId() << " " << dbc[0].getFrom() << "\n";
+		for(auto sig : dbc[0]) {
 			std::cout << sig.getName() << " " << sig.getUnit() << std::endl;
 			std::cout << sig.getStartbit() << "," << sig.getLength() << std::endl;
 			std::cout << "(" << sig.getFactor() << ", " << sig.getOffset() << ")" << std::endl;

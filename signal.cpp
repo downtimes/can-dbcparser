@@ -13,6 +13,17 @@
 #include <iterator>
 #include <algorithm>
 
+std::string& trim(std::string& str, const std::string& toTrim = " ") {
+	std::string::size_type pos = str.find_last_not_of(toTrim);
+	if (pos == std::string::npos) {
+		str.clear();
+	} else {
+		str.erase(pos + 1);
+		str.erase(0, str.find_first_not_of(toTrim));
+	}
+	return str;
+}
+
 std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems) {
     std::stringstream ss(s);
     std::string item;
@@ -105,7 +116,9 @@ std::istream& operator>>(std::istream& in, Signal& sig) {
 	sstream >> sig.maximum;
 	sstream.ignore(1);
 
-	sstream >> sig.unit;
+	std::string unit;
+	sstream >> unit;
+	sig.unit = trim(unit, "\"");
 
 	std::string to;
 	sstream >> to;
