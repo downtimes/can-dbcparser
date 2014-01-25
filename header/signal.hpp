@@ -9,6 +9,7 @@
 #define SIGNAL_HPP_
 
 #include <string>
+#include <iosfwd>
 #include <set>
 
 enum class ByteOrder {

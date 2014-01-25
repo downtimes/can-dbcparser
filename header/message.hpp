@@ -10,10 +10,12 @@
 
 #include <string>
 #include <vector>
+#include <iosfwd>
 #include <cstdint>
 #include <set>
 
 #include "signal.hpp"
+
 
 class Message {
 

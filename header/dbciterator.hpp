@@ -9,7 +9,7 @@
 #define DBCTREE_HPP_
 
 #include <vector>
-#include <istream>
+#include <iosfwd>
 #include "message.hpp"
 
 class DBCIterator {
