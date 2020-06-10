@@ -12,6 +12,7 @@
 #include <limits>
 #include <iterator>
 #include <algorithm>
+#include <vector>
 
 std::string& trim(std::string& str, const std::string& toTrim = " ") {
 	std::string::size_type pos = str.find_last_not_of(toTrim);
